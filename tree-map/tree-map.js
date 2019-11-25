@@ -32,6 +32,24 @@ var Tree = function(value) {
   this.value = value;
   this.children = [];
 };
+// in order to add values to the tree  , we need to create a new tree first and then add to it's array of childrens the values 
+Tree.prototype.addChild = function(value) {
+var node = new Tree(value);
+
+ this.children.push(node);
+   return node;
+}
+// here using map we are going to itterate over the array of the childrens of the tree and we are going to assign or push them to the array of children's of the new tree and the map will gives us a new array of the same children's from the initial tree using a callback function and then return for us the new tree itself ..
+// this is the logic that i thought about but sadly it didn't work and i ran out of time .. ill do a refactor later during self hacking time 
+Tree.prototype.map = function(callBack) {
+  var Tree1 = new Tree() ; 
+  Tree1.value = callBack(this.value)
+
+  this.children.forEachfor(element){
+    Tree1.children.push(element.map(callBack))
+  }
+  return Tree1 ; 
+};
 
 
 
